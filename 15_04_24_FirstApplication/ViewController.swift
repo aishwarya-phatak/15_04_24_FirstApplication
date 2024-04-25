@@ -35,22 +35,24 @@ class ViewController: UIViewController {
         btnSubmit!.backgroundColor = .green
         btnSubmit!.setTitleColor(.brown, for: .normal)
         
-        btnSubmit?.addAction(UIAction(handler: { action in
-            let extractedTextFromTextField = self.usernameTextField?.text
-            self.messageLabel!.text = "Welcome " + extractedTextFromTextField!
-        }), for: .touchUpInside)
+        //way 2 - using closure
+//        btnSubmit?.addAction(UIAction(handler: { action in
+//            let extractedTextFromTextField = self.usernameTextField?.text
+//            self.messageLabel!.text = "Welcome " + extractedTextFromTextField!
+//        }), for: .touchUpInside)
         
-//        btnSubmit!.addTarget(self,
-//                            action: #selector(btnSubmitClicked),
-//                            for: .touchUpInside)
+        
+        //way 1 -- using addTarget Method
+        btnSubmit!.addTarget(self,
+                            action: #selector(btnSubmitClicked),
+                             for: .touchUpInside)
         btnSubmit?.backgroundColor = .darkGray
         
         self.view.addSubview(btnSubmit!)
-       
     }
     
-//    @objc func btnSubmitClicked(){
-//        let extractedTextFromTextField = self.usernameTextField?.text
-//        self.messageLabel!.text = "Welcome " + extractedTextFromTextField!
-//    }
+    @objc func btnSubmitClicked(){
+        let extractedTextFromTextField = self.usernameTextField?.text
+        self.messageLabel!.text = "Welcome " + extractedTextFromTextField!
+    }
 }
